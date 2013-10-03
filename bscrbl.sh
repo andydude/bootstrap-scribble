@@ -25,7 +25,7 @@ if [ $? -ne 0 ]; then
     exit $?
 fi
 
-python "${APP_DIR}/scribble2bootstrap.py" "${TMP_DIR}/${BASE}.2.html" > "${TMP_DIR}/${BASE}.3.html"
+python "${APP_DIR}/bscrbl.py" "${TMP_DIR}/${BASE}.2.html" > "${TMP_DIR}/${BASE}.3.html"
 if [ $? -ne 0 ]; then
     echo "$0: ERROR: python's ElementTree didn't like the input"
     exit $?
