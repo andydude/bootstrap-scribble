@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+        <style>
+         body {
+           margin-top: 47px;
+           line-height: 2;
+         }
+         .col-sidebar .panel {
+           position: fixed;
+           width: 260px;
+           top: 40px;
+           margin-top: 30px;
+           margin-bottom: 30px;
+           padding-top:    10px;
+           padding-bottom: 10px;
+           background-color: #f8f8f8;
+         }
+/*
+         .col-sidebar ol li {
+           display: list-item;
+           list-style-type: decimal;
+         }
+*/
+         .col-sidebar li > a {
+           padding-top: 0px;
+           padding-bottom: 0px;
+         }
+
+         /* All levels of nav */
+         .col-sidebar .nav > li > a {
+           display: block;
+           color: #716b7a;
+         }
+         .col-sidebar .nav > li > a:hover,
+         .col-sidebar .nav > li > a:focus {
+           text-decoration: none;
+           background-color: #e7e7e7;
+         }
+         .col-sidebar .nav > .active > a,
+         .col-sidebar .nav > .active:hover > a,
+         .col-sidebar .nav > .active:focus > a {
+           font-weight: bold;
+           color: #3276b1;
+           background-color: transparent;
+         }
+         /* Second level */
+         .col-sidebar .nav .nav > li > a {
+           padding-left: 30px;
+         }
+         /* Third level */
+         .col-sidebar .nav .nav .nav > li > a {
+           padding-left: 50px;
+         }
+        </style>
+    </head>
+    <body data-spy="scroll" data-target=".col-sidebar" data-offset="60">
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+            </div>
+        </div>
+        <!-- scripts -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    </body>
+</html>

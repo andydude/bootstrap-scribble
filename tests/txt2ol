@@ -1,0 +1,42 @@
+#!/usr/bin/env python
+
+def convert_pairs_to_html(pairs):
+    html = ''
+    current_level = -1
+    for section, anchor in pairs:
+        level = section.count('.')
+
+        if level > current_level:
+            html += '<ol>' * (level - current_level)
+        elif level < current_level:
+            html += '</ol>' * (current_level - level)
+        else: # level == current_level
+            pass
+        current_level = level
+
+        html += '<li data-section="%s">%s</li>' % (section, anchor)
+
+    level = -1
+    if level > current_level:
+        html += '<ol>' * (level - current_level)
+    elif level < current_level:
+        html += '</ol>' * (current_level - level)
+    else: # level == current_level
+        pass
+
+    return html
+
+def file2pairs(filename):
+    pairs = []
+    f = open(filename, "rb")
+    for line in f.readlines():
+        section, anchor = line.strip().split(' ', 1)
+        pairs.append((section, anchor))
+    f.close()
+    return pairs
+
+if __name__ == '__main__':
+   import sys
+   pairs = file2pairs(sys.argv[1])
+   print(pairs)
+   print(convert_pairs_to_html(pairs))
