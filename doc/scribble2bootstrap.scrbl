@@ -1,8 +1,8 @@
 #lang scribble/manual
-@(require scribble/core)
-@(require scriblib/render-cond)
-@(require bscrbl)
+@(require (file "../bscrbl.rkt"))
 @title{Scribble to Bootstrap manual}
+
+This manual describes the command-line tool @code{bscrbl.sh}.
 
 @section{Introduction}
 
@@ -17,12 +17,20 @@ scribble2bootstrap mydocument.scrbl
 what?
 }
 
+Bla
 @verbatim{
 a b c d
 e f g h
 i j k l
 m n o pw
+
+
+@code{# Main entry point}
+@code-input{bscrbl.sh MyFile.scrbl}
+@code-output{ output[MyFile.html]}
+
 }
+@code{# Main entry point}
 
 This is an unordered list:
 @itemlist[
@@ -42,6 +50,7 @@ This is an ordered list:
   @item{Fifth}
 ]
 
-
+This is a test.
 @verbatim{a b
 c d}
+

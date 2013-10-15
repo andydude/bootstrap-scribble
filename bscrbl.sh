@@ -20,7 +20,7 @@ if [ $? -ne 0 ]; then
 fi
 mv "${BASE}.html" "${TEMP_DIR}/${BASE}.1.html"
 
-xmllint --html "${TEMP_DIR}/${BASE}.1.html" --xmlout > "${TEMP_DIR}/${BASE}.2.html"
+
 if [ $? -ne 0 ]; then
     echo "$0: ERROR: xmllint didn't like the input"
     exit $?

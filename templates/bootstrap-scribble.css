@@ -1,9 +1,28 @@
 body {
   line-height: 2;
+  margin-top: 47px;
 }
 
 h2 {
-  padding-top: 68px;
+  padding-top: 70px;
+}
+
+/*
+ * Monospace stuff
+ */
+kbd, samp {
+  padding: 2px 4px;
+  font-size: 90%;
+  white-space: nowrap;
+  border-radius: 4px;
+}
+kbd {
+  color: #468847;
+  background-color: #f2f7f2;
+}
+samp {
+  color: #3a87ad;
+  background-color: #f2f4f9;
 }
 
 /* Temporary fix until we convert to code/var/samp/kbd */
@@ -25,9 +44,9 @@ h2 {
 
 .sidebar {
   position: fixed;
-  top: 40px;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  top: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   padding-top:    10px;
   padding-bottom: 10px;
   background-color: #f8f8f8;
