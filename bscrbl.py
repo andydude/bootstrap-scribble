@@ -4,6 +4,7 @@
 import xml.etree.ElementTree as etree
 from urllib import unquote
 import sys
+
 def fix_name(name):
     name = unquote(name)
     name = name.replace('(', '')
@@ -12,15 +13,18 @@ def fix_name(name):
     return name
 
 def convert_pairs_to_html(pairs):
-    html = ''
+    html = '</li>'
     current_level = -1
     for section, anchor in pairs:
         level = section.count('.')
 
         if level > current_level:
-            html += '<ol class="nav">' * (level - current_level)
+            # Remove </li>
+            html = html[:-5]
+            html += '<ul class="nav">' * (level - current_level)
         elif level < current_level:
-            html += '</ol>' * (current_level - level)
+            # Add </li>
+            html += '</ul></li>' * (current_level - level)
         else: # level == current_level
             pass
         current_level = level
@@ -28,25 +32,24 @@ def convert_pairs_to_html(pairs):
         html += '<li data-section="%s">%s</li>' % (section, anchor)
 
     level = -1
-    if level > current_level:
-        html += '<ol>' * (level - current_level)
-    elif level < current_level:
-        html += '</ol>' * (current_level - level)
+    if level < current_level:
+        html += '</ul></li>' * (current_level - level)
     else: # level == current_level
         pass
 
-    return html
+    # Remove </li>
+    return html[:-5]
 
 def template_with_columns(sidebar, main):
     '''
         <div class="container">
             <div class="row">
-                <div class="col-md-3 col-sidebar">
-                    <div class="panel panel-default hidden-print sidebar">
+                <div class="col-sm-3 col-sidebar">
+                    <div class="panel panel-default hidden-print hidden-xs sidebar">
                         %s
                     </div><!-- .sidebar -->
                 </div><!-- .col-sidebar -->
-                <div class="col-md-9 col-main" role="main">
+                <div class="col-sm-9 col-main" role="main">
                     %s
                     <!-- .main -->
                 </div><!-- .col-main -->
@@ -99,6 +102,9 @@ def main(filename):
                 hd.remove(child)
             hd.attrib['id'] = name
             hd.text = title
+
+            # Increase Font Size
+            hd.tag = 'h' + str(number-1)
 
 
     # Build New TOC
